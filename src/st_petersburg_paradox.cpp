@@ -1,5 +1,6 @@
 #include <iostream>
 #include <random>
+#include "progressbar/include/progressbar.hpp"
 
 int play_game(std::mt19937 gen, std::uniform_int_distribution<> dist){
     int wins = 0;
@@ -13,15 +14,21 @@ int play_game(std::mt19937 gen, std::uniform_int_distribution<> dist){
         }
     }
     return std::pow(2, wins);
-}
+};
 
-int main() {
+int simulation() {
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> dist(0, 1);
-    for (int i=1; i < 1000000; i++){
+    progressbar bar(100000);
+    for (int i=1; i < 100000; i++){
+        bar.update();
         int winnings = play_game(gen, dist);
-        std::cout << winnings << std::endl;
     }
+    return 0;
+}
+
+int main() {
+    simulation();
     return 0;
 }
