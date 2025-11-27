@@ -1,0 +1,3 @@
+[submodule "dependencies/progressbar"]
+	path = dependencies/progressbar
+	url = git@github.com:gipert/progressbar.git
