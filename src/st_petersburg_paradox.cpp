@@ -1,6 +1,4 @@
-#include <iostream>
-#include <random>
-#include "progressbar/include/progressbar.hpp"
+#include <st_petersburg_paradox.hpp>
 
 int play_game(std::mt19937 gen, std::uniform_int_distribution<> dist){
     int wins = 0;
