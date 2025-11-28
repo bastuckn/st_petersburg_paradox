@@ -1,3 +1,6 @@
 [submodule "dependencies/progressbar"]
-	path = include/progressbar
+	path = external/progressbar
 	url = git@github.com:gipert/progressbar.git
+[submodule "external/matplotplusplus"]
+	path = external/matplotplusplus
+	url = git@github.com:alandefreitas/matplotplusplus.git

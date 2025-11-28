@@ -1,3 +1,4 @@
-#include <iostream>
+#include <matplot/matplot.h>
+#include <progressbar.hpp>
 #include <random>
-#include "progressbar/include/progressbar.hpp"
+#include <cmath>
