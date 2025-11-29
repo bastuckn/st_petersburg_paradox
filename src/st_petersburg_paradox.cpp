@@ -26,14 +26,13 @@ int simulation(int N_PLAYERS) {
 
     // calculate average at each step
     std::vector<int> sums(N_PLAYERS);
-    sums[0] = results[0];
-    for (int i=1; i<N_PLAYERS; i++) {
-        sums[i] = sums[i-1] + results[i];
-    }
     std::vector<float> averages(N_PLAYERS);
-    for (int i = 0; i<N_PLAYERS; i++) {
-        averages[i] = static_cast<float>(sums[i]) / (i+1);
+    int sum = 0;
+    for (int i = 0; i < N_PLAYERS; i++) {
+        sum += results[i];
+        averages[i] = static_cast<float>(sum) / (i + 1);
     }
+
     // graph results
     std::vector<double> x(N_PLAYERS), y(N_PLAYERS);
     for (int i = 0; i < N_PLAYERS; i++) {
