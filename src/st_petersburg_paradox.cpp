@@ -17,7 +17,7 @@ int play_game(std::mt19937& gen, std::uniform_int_distribution<>& dist){
 
 int simulation(int N_PLAYERS) {
     // variables to store results
-    int results[N_PLAYERS];
+    std::vector<int> results(N_PLAYERS);
 
     // run the simulation
     std::random_device rd;
@@ -31,12 +31,12 @@ int simulation(int N_PLAYERS) {
     }
 
     // calculate average at each step
-    int sums[N_PLAYERS];
+    std::vector<int> sums(N_PLAYERS);
     sums[0] = results[0];
     for (int i=1; i<N_PLAYERS; i++) {
         sums[i] = sums[i-1] + results[i];
     }
-    float averages[N_PLAYERS];
+    std::vector<float> averages(N_PLAYERS);
     for (int i = 0; i<N_PLAYERS; i++) {
         averages[i] = static_cast<float>(sums[i]) / (i+1);
     }
