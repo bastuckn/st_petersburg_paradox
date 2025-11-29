@@ -3,16 +3,10 @@
 
 int play_game(std::mt19937& gen, std::uniform_int_distribution<>& dist){
     int wins = 0;
-    bool winning = true;
-    while (winning) {
-        // play game
-        if (dist(gen)) {
-            wins++;
-        } else {
-            winning = false;
-        }
+    while (dist(gen)) {
+        wins++;
     }
-    return std::pow(2, wins);
+    return 1 << wins; // use bit shift for 2^wins
 };
 
 int simulation(int N_PLAYERS) {
