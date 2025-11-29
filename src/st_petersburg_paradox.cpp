@@ -19,9 +19,9 @@ int simulation(int N_PLAYERS) {
     std::uniform_int_distribution<> dist(0, 1);
     progressbar bar(N_PLAYERS);
     for (int i=0; i < N_PLAYERS; i++) {
-        bar.update();
         int winnings = play_game(gen, dist);    
         results[i] = winnings;
+        bar.update();
     }
 
     // calculate average at each step
@@ -34,25 +34,24 @@ int simulation(int N_PLAYERS) {
     }
 
     // graph results
-    std::vector<double> x(N_PLAYERS), y(N_PLAYERS);
+    std::vector<double> x(N_PLAYERS);
     for (int i = 0; i < N_PLAYERS; i++) {
         x[i] = i + 1;           // Number of games on x-axis
-        y[i] = averages[i];     // Average payout on y-axis
     }
-    matplot::plot(x, y);
+    matplot::plot(x, averages);
     matplot::xlabel("Number of games");
     matplot::ylabel("Average payout");
     matplot::title("Running average - St. Petersburg Simulation");
     matplot::show();
 
-    std::cout << "Press Enter to exit...";
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::cin.get();
     
     return 0;
 }
 
 int main() {
-    std::cout << "Enter number of games to be played for simulaiton: \n";
+    std::cout << "Enter number of games to be played for simulation: \n";
     int N_PLAYERS;
     std::cin >> N_PLAYERS;
     simulation(N_PLAYERS);
