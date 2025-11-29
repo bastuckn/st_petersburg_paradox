@@ -51,9 +51,22 @@ int simulation(int N_PLAYERS) {
 }
 
 int main() {
-    std::cout << "Enter number of games to be played for simulation: \n";
     int N_PLAYERS;
-    std::cin >> N_PLAYERS;
+    // check input:
+    while (true) {
+        std::cout << "Enter number of games to be played for simulation: ";
+        std::cin >> N_PLAYERS;
+
+        if (!std::cin.fail() && N_PLAYERS > 0) {
+            break; // valid input!
+        }
+
+        // Bad input -> reset cin
+        std::cin.clear();  // clear error flags
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // discard bad input
+
+        std::cout << "Invalid input. Please enter a positive integer.\n";
+    }
     simulation(N_PLAYERS);
     return 0;
 }
