@@ -68,6 +68,13 @@
         "thread": "cpp",
         "typeindex": "cpp",
         "typeinfo": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "strstream": "cpp",
+        "cfenv": "cpp",
+        "codecvt": "cpp",
+        "regex": "cpp",
+        "source_location": "cpp",
+        "future": "cpp",
+        "stdfloat": "cpp"
     }
 }

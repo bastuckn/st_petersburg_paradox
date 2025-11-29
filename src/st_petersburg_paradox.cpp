@@ -38,7 +38,19 @@ int simulation(int N_PLAYERS) {
     for (int i = 0; i < N_PLAYERS; i++) {
         x[i] = i + 1;           // Number of games on x-axis
     }
-    matplot::plot(x, averages);
+    // sample data
+    std::vector<double> x_ds;
+    std::vector<double> y_ds;
+
+    int step = N_PLAYERS / 2000;                 // keep about 2000 points
+    if (step < 1) step = 1;
+
+    for (int i = 0; i < N_PLAYERS; i += step) {
+        x_ds.push_back(x[i]);
+        y_ds.push_back(averages[i]);
+    }
+    // plot
+    matplot::plot(x_ds, y_ds);
     matplot::xlabel("Number of games");
     matplot::ylabel("Average payout");
     matplot::title("Running average - St. Petersburg Simulation");
